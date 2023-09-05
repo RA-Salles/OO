@@ -1,0 +1,60 @@
+# all figures are collections of points. lines are drawn through the closest point in the figure. lines are defined through two points. the drawer should handle the rest.
+
+#
+defin
+define_class figure(){
+    var lines = []
+    define initialization(self, funnyx, funnyy, isclosed){
+        var points = []
+        for x,y in funnyx, funnyy do:
+            points.append([x,y])
+    }
+    define makelines(self, points){
+        #a line should be as such -> [[x1,x2,y1,y2],[x1,x2,y1,y2],...]
+        #                               line 1          line2       etc.
+        #where points should be [x,y]
+        #the drawer should be able to handle the rest
+        funny = len(points)/2 #this must return the number of objects inside this vector
+        #as we dont assume we will have some kind of floor function, we must do this badness here:
+        zetta = int(funny)
+        if (zetta > funny) do:
+            """
+                this here handles cases such as this:
+                    say we divide the slots inside the points and we get something like 25.4.
+                    then, if we aplied int to the division, we would get 25, which is great. 
+                    else, let say we got 25.6. Then, rounding might give us 26. And the .6 there should be floored,
+                    not exaclty rounded. 
+                    Then, we must compare the rounded division against the normal division. If its greater, it must 
+                    be subtracted 1, else we get a fuckup in the program.
+            """
+            funny = zetta - 1
+        else:
+            funny = zetta  
+
+        var pointa = []
+        var pointb = []
+        for(i in range(funny)) do:
+            #registerpoints as lines
+            self.line.append([pointa[0],pointb[0],pointa[1],pointb[1]])
+            #clear points for further loop use.
+            pointa = []
+            pointb = []
+    }
+    define destruction(){
+
+    }
+
+}
+
+"""
+this is a long comment. Everything in between the three thingys are considered comments.
+to create a figure object, one should give the figure object a vector containing the points which generate the figure in a cartesian plain.
+the figures may be moved by the drawer, but on should give the points referencing a center, which will be moved by the drawer which will use a center point.
+if a figure is closed, the last point in the list will be linked to the first by a line. Else, this line does not exist and the figure is open
+
+"""
+
+define figurecreationtest(){
+    vectorx = []
+
+}

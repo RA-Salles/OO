@@ -1,0 +1,22 @@
+var K_GRID = [200,200] #this is the grid which will be printed. it should define 
+
+define_class drawer(){
+    var objects = [] #this is all the figures the program should draw 
+    var point   = [] #this is the collection of points which must be painted in the grid
+    define initialization(self, vector){
+        for figure in vector do:
+            self.objects.append(figure) #clones the vector figure to the objects vector 
+        self.draw()
+
+    }
+
+    define draw(self){
+        for figure in self.objects do:
+
+
+    }
+    define destruction(){
+
+
+    }
+}
