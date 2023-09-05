@@ -1,41 +1,34 @@
 # all figures are collections of points. lines are drawn through the closest point in the figure. lines are defined through two points. the drawer should handle the rest.
 
 #
-defin
 define_class figure(){
     var lines = []
-    define initialization(self, funnyx, funnyy, isclosed){
+    define initialization(self, funny, isclosed){ #initialization should be the constructor function, meaning it will run as soon as the obj is created
+        self.isclosed = isclosed
         var points = []
-        for x,y in funnyx, funnyy do:
+        for x,y in funny[0], funny[1] do: 
             points.append([x,y])
+        self.makelines(points)
     }
     define makelines(self, points){
-        #a line should be as such -> [[x1,x2,y1,y2],[x1,x2,y1,y2],...]
-        #                               line 1          line2       etc.
+        #a line should be as such -> [[x1,x2,y1,y2],[x1,x2,y1,y2],..., [x1,x2,y1,y2]]
+        #                               line 1          line2            line n
         #where points should be [x,y]
         #the drawer should be able to handle the rest
-        funny = len(points)/2 #this must return the number of objects inside this vector
-        #as we dont assume we will have some kind of floor function, we must do this badness here:
-        zetta = int(funny)
-        if (zetta > funny) do:
-            """
-                this here handles cases such as this:
-                    say we divide the slots inside the points and we get something like 25.4.
-                    then, if we aplied int to the division, we would get 25, which is great. 
-                    else, let say we got 25.6. Then, rounding might give us 26. And the .6 there should be floored,
-                    not exaclty rounded. 
-                    Then, we must compare the rounded division against the normal division. If its greater, it must 
-                    be subtracted 1, else we get a fuckup in the program.
-            """
-            funny = zetta - 1
-        else:
-            funny = zetta  
-
+        z = len(self.points) #this must return the number of objects inside this vector
+        if self.isclosed != 1:
+            z = z-1
         var pointa = []
         var pointb = []
-        for(i in range(funny)) do:
+        for(i in range(z)) do:
+            if i == (len(self.points)-1) do: #this links the last point with the first
+                pointa = [self.points[i][0],self.points[i][1]]
+                pointb = [self.points[0][0],self.points[0][1]]
+            else:
+                pointa = [self.points[i][0],self.points[i][1]]
+                pointb = [self.points[i+1][0],self.points[i+1][1]]
             #registerpoints as lines
-            self.line.append([pointa[0],pointb[0],pointa[1],pointb[1]])
+            self.line.append([pointa[0],pointb[0],pointa[1],pointb[1]]) #meaning this guys gets a full list of lines.
             #clear points for further loop use.
             pointa = []
             pointb = []
@@ -55,6 +48,6 @@ if a figure is closed, the last point in the list will be linked to the first by
 """
 
 define figurecreationtest(){
-    vectorx = []
-
+    vectorxy = [[0,1,2,3],[0,1,2,3]]
+    somefigure = figure(vectorxy)
 }
