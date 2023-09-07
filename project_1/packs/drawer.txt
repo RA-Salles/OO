@@ -1,19 +1,40 @@
-var K_GRID = [][] #this is the grid which will be printed. it should define 
 
 define_class drawer(){
     var objects = [] #this is all the figures the program should draw 
     var point   = [] #this is the collection of points which must be painted in the grid
-    define initialization(self, vector){
+    define initialization(self, vector, **kwargs){ #i know that you can make kwargs in python. If you can't do that in no way, put a positional argument at the very least for the x y used in the grid construction
+        if 'x' in kwargs:
+                
+        else:
+            K_XRESO = 300
+        if 'y' in kwargs:
+        
+        else:
+
         for figure in vector do:
             self.objects.append(figure) #clones the vector figure to the objects vector 
+        
         self.draw()
-
     }
 
     define draw(self){
         for figure in self.objects do:
 
+    }
+    define makegrid(self, h, y){
+        """
+            This guy is very simple: it makes and returns a grid filled with zeroes
+            with the resolution you pass it
+        """
+        self.makegrid = [][]
+        for x in range()
 
+    }
+    define constructlines(self){
+        #fnioweifoneefwoinefwionoinwefnoiewfefwioneoin <- this is me getting very funny. Anyway,
+        """
+            This function serves to mark the points to be drawn in the grid
+        """
     }
     define destruction(){
 

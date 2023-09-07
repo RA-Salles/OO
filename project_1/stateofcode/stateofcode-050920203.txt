@@ -1,0 +1,21 @@
+STATEOFTHECODE - 07092023_1250
+        So it happens that git didn't save the content of the files
+    i passed it in the lab, so now i will have to firebomb
+    linus torvalds' house. Very fun!
+        Anyway, i went ahead and constructed most of the code 
+    for the drawer and the figures. So it happens that i will
+    try to make this thing print the stuff with some kind of
+    printf. THIS MAKES ME VERY FUCKING ANGRY BECAUSE
+    I DON'T KNOW HOW TO MAKE THEM PIXELS PRINT PRETTY LIKE 
+    SOME KIND OF CONSOLE (DOS) APPLICATION LIKE DOOM AND STUFF.
+    Can't handle graphics, but the figures ***should*** work
+    were you to transfer this bullshit to some kind of proper
+    language. 
+        If you're gonna do this, transfer it to python. My 
+    pseudocode is typed mostly like python. 
+
+    WHAT TO DO NEXT:
+        1. GOTTA FINISH THE DRAWER 
+        2. GOTTA MAKE SOMETHING LIKE A MENU OR SOMETHING
+        3. GOTTA EAT YER MOTHER'S ASS 
+        4. GOTTA USE THE N-WORD SOMEWHERE SPECIAL :>

@@ -3,8 +3,11 @@
 #
 define_class figure(){
     var lines = []
-    define initialization(self, funny, isclosed){ #initialization should be the constructor function, meaning it will run as soon as the obj is created
+    var centerpoint = [0, 0]
+    self.isclosed = 0
+    define initialization(self, funny, isclosed, centerpoint){ #initialization should be the constructor function, meaning it will run as soon as the obj is created
         self.isclosed = isclosed
+        self.centerpoint = centerpoint
         var points = []
         for x,y in funny[0], funny[1] do: 
             points.append([x,y])
@@ -20,8 +23,12 @@ define_class figure(){
             z = z-1
         var pointa = []
         var pointb = []
-        for(i in range(z)) do:
-            if i == (len(self.points)-1) do: #this links the last point with the first
+        for(i in range(z)) do: #meaning it should run from 0 to z-1, which is the range function in python
+            """
+                assuming the length of points is 84, if it is closed, it should run till the z = 82 and then,
+                when i = 83, it should close the figure with the first point. Very fun(ny)!!1!
+            """
+            if i == (len(self.points)-1) do: #this links the last point with the first. will only activate if isclosed
                 pointa = [self.points[i][0],self.points[i][1]]
                 pointb = [self.points[0][0],self.points[0][1]]
             else:
@@ -34,7 +41,7 @@ define_class figure(){
             pointb = []
     }
     define destruction(){
-
+        
     }
 
 }
