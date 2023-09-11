@@ -1,0 +1,92 @@
+
+define_class drawer(){
+    var objects = [] #this is all the figures the program should draw 
+    var point   = [] #this is the collection of points which must be painted in the grid
+    var message = "" #this is for debug 
+    define initialization(self, vector, **kwargs){ #i know that you can make kwargs in python. If you can't do that in no way, put a positional argument at the very least for the x y used in the grid construction
+        self.message = "adjusting for resolution"
+        if 'x' in kwargs:
+            K_XRESO = kwargs['x']
+        else:
+            K_XRESO = 300
+        if 'y' in kwargs:
+            K_XRESO = kwargs['y']
+        else:
+            K_YRESO = 300
+        self.message = "making grid"
+        self.makegrid(K_YRESO, K_XRESO) #creates a grid
+        for figure in vector do:
+            self.objects.append(figure) #clones the vector figure to the objects vector 
+        self.message = "constructing lines"
+        self.constructlines()
+        self.message = "drawing"        
+        self.draw() #as soon as the drawer is created, it draws the figures loaded inside the vector passed. 
+    }
+
+    define draw(self){
+        for line in self.grid do:
+            for i in len(line) do:
+                string = ""
+                if line[i] == 0:
+                    string += " "
+                else:
+                    string += "." 
+            print(string) 
+
+    }
+    define makegrid(self, h, w, **kwargs){
+        """
+            This guy is very simple: it makes and returns a grid filled with zeroes
+            with the resolution you pass it
+        """
+        self.grid = []
+        for x in range(h) do: #do this for every line 
+            self.grid.append([])
+        
+        for line in self.grid:
+            for y in range(w) do: #do this for every column
+                line.append(0)
+
+        if 'debug' in kwargs do: #this should print every single line one by one.
+            for line in self.grid do:
+                print(line)
+    }
+    define constructlines(self){
+        """
+        #fnioweifoneefwoinefwionoinwefnoiewfefwioneoin <- this is me getting very funny. Anyway,
+            This function serves to mark the points to be drawn in the grid. Meaning it calculates every point 
+            between the two points. This, though, needs the grid to work.
+
+            (y-y0)/(x-x0) = m 
+            f(x) = y = m(x-x0) + y0 <- this is the line equation. It may be used for stuff :>
+        """
+        #alright, first, we must gather the collections of lines. then we can work.
+        precision = 10 #this guy WILL slow down the system if its set too high and it WILL NOT give you anymore resolution if you do not increase the grid resolution first.
+                        #this should never ever be handled to the common user. He should be able to fuckup this ten times more than i do. And i do manage to fuck it up quite a lot.
+        lines = []
+        for object in self.objects do:
+            for line in object.lines do: #meaning we are indeed accessing every line of every object that needs to be drawn
+                lines.append(line) # it should generate something like lines = [[line1 from obj1],[line2 from obj1],[line3 from obj1], etc., [line1 from obj2],[line2 from obj2],[line3 from obj2],...]
+                                    #lines is then the collection of all the lines the system should generate
+        points = []                 #and points is the collection of all the points to be drawn and shown in the grid
+        for line in lines: #now that we gathered all lines, we gotta decode and prepare the grid
+            #remember that lines are in this format -> [x1,x2,y1,y2]
+            points = [] #this should be formatted as such -> [[x,y],[x,y],etc.]
+            start = [line[0],line[2]] #decoded. Nice
+            finish = [line[1],line[3]] #this too
+            m = (finish[1] - start[1])/(finish[0] - start[0]) #get that tan. Will be very important next
+            define f(x){ #left here as of 10092023. Shit is getting on my nerves and im taking a break. im back as of 11092023 :>
+                y = m*(x - start[0]) + start[1] #this should work. 
+                return y
+            }
+            #now for some true pseudocode or smth 
+            NOW, USING THE F(X) FUNCTION, GENERATE THE POINTS FROM X0 TO X1 TO CREATE THE REMAINING POINTS. (use linspace or smth)
+            THEN, APPEND THESE POINTS TO THE POINTS VECTOR. DO THIS FOR ALL lines
+
+        
+    }
+    define destruction(){
+
+
+    }
+}
