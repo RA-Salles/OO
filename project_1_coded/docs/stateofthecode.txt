@@ -1,0 +1,13 @@
+STATEOFTHECODE 14092023_1241
+    Ey, im back.
+    So, first things first, gotta stabilish 
+    how we're gonna go about this shit.
+
+    Anyway:
+        as soon as big boy line gets initialized, it
+        will calculate and save its points to a list according
+        to its precision. Precision should be passed when initializing
+        any line, else we'll have funny. I'm actually thinking
+        of setting a hardcoded constant for this. Should be easier.
+
+        

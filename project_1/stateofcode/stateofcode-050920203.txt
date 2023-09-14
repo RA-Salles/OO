@@ -25,3 +25,10 @@ STATEOFTHECODE 10092023_1651
     1 or 2 hours. It's pseudo, so i can't actually test it, but 
     that's about it. 
     ALRIGHT! LET'S FUCKING DO IT!
+
+STATEOFTHECODE 14092023_1231
+    Alright! bossman said to get the code actually running.
+    I'll use python and stuff and this should be ultrafunny.
+    So, basically, this is the message of axing. I'm clipping this
+    project and getting my hands actually dirty in trying to make 
+    it run. Pseudocode my ass, we'll do it in python!
