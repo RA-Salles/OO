@@ -3,14 +3,18 @@
 #
 define_class figure(){
     var lines = []
+    var message = ""
     var centerpoint = [0, 0]
     self.isclosed = 0
     define initialization(self, funny, isclosed, centerpoint){ #initialization should be the constructor function, meaning it will run as soon as the obj is created
+        self.message = "initializing variables"
         self.isclosed = isclosed
         self.centerpoint = centerpoint
         var points = []
-        for x,y in funny[0], funny[1] do: 
+        self.message = "gathering points"
+        for x,y in funny[0], funny[1] do: #i do believe this will work. Else im fucked :>
             points.append([x,y])
+        self.message = "initializing lines"
         self.makelines(points)
     }
     define makelines(self, points){
@@ -41,7 +45,8 @@ define_class figure(){
             pointb = []
     }
     define destruction(){
-        
+        #i do believe this should go ahead and free the space or something, but 
+        #at least in python we got garbage collection and stuff.
     }
 
 }

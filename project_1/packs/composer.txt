@@ -1,0 +1,110 @@
+"""
+This guy joins drawer and figure. It provides some functions so you can create a figure and etc.
+"""
+from basic import all #imports figure and drawer
+
+
+define_class composer(){
+    var message_drawer = "" #debug messages
+    var message_figure = "" #debug messages
+    var message = "" #debug messages
+    
+    define initialization(self){ #this guy should not need anything at all, which is very good.
+        self.figures = []
+        print("welcome")
+        print("input the grid x size")
+        self.gridx = input()
+        print("input the grid y size")
+        self.gridy = input()
+        var i = 0
+        while i == 0 do:
+            print("create a new figure? (y/n)")
+            zeta = input()
+            if zeta == 'y' do:
+                self.createfigures()
+            if zeta == 'n' and len(self.figures) != 0 do:
+                print(len(self.figures),"figures created. Prepare for print")
+            if zeta != 'y' and zeta != 'n' do:
+                print("inval")
+        self.handler = drawer(self.figures) #im not passing the grid resolution specification just yet. I will do this maybe in the real code :>
+        print("tnx for using and make sure to kys :>")
+    }
+
+    define initmessage(){
+        print("        WELCOME TO THE GRAPH GEN OR SMTH!        ")
+        print("")
+        print("")
+        print("------- MADE BY THE WORST CODER ALIVE -----")
+        print("")
+        print("")
+        print("      BCL -> BadCodeLocust -> B@dC0d&L0cvsT")
+        print("")
+        print("")
+        print("")
+        print("No rights reserved :>")
+        print("Sponsored by shadow wizard money gang!")
+        print("we love casting spells")
+    } 
+
+    define createfigure(self){
+        figures = []
+        var i = 0
+        while i == 0 do:
+            print("create a new figure? (y/n)")
+            zeta = input()
+            if zeta == 'y' do:
+                print("creating figure sequence initialized")
+                print("you will now pass the points of the figure")
+                print("to stop adding points to your figure, type stop")
+                var z = 0
+                var counter = 0
+                var figurepoints = [[],[]]
+                while z == 0 do: #point creation sequence
+                    counter += 1
+                    print("enter the x coordinate")
+                    x = input()
+                    if x == 'stop' do:
+                        z = 1
+                        break
+                    print("enter the y coordinate")
+                    y = input()
+                    if y == 'stop' do:
+                        z = 1
+                        break
+                    figurepoints.x.append(x)
+                    figurepoints.y.append(y)
+                print("is it closed? (y/n)")
+                beta = input()
+                while True:    
+                    if beta == y do:
+                        closed = 1
+                        break
+                    if beta == n do:
+                        closed = 0
+                        break
+                    if beta != y and beta != n do:
+                        print("inval")
+                print("creating figure")
+                figures.append(figure(vector,closed, [0,0])) #when we're ready, centerpoint should be defined by the user.
+            if zeta == 'n' do:
+                print("finishing figure creation")
+                i = 1
+                break
+            if zeta != 'y' and zeta != 'n' do:
+                print("inval")
+        self.figures = figures
+
+    }
+    define printdebug(){
+        
+        print(self.message_drawer)
+        print(self.message_figure)
+        print
+
+    }
+    define destruction(){
+
+    }
+
+
+}
