@@ -10,4 +10,15 @@ STATEOFTHECODE 14092023_1241
         any line, else we'll have funny. I'm actually thinking
         of setting a hardcoded constant for this. Should be easier.
 
+STATEOFTHECODE 21092023_1324
+    aLRIGHT!
+    Most of pointhandler is done. Circle got some
+    cool new lambda functions that calculate 
+    the x y pairs in a very fun parametric way.
+    Figure is almost done. Next is building the
+    allx and ally, which will be passed down to 
+    matplotlib and this should be ultrafun!
+
+
+
         
