@@ -19,6 +19,26 @@ STATEOFTHECODE 21092023_1324
     allx and ally, which will be passed down to 
     matplotlib and this should be ultrafun!
 
+STATEOFTHECODE 21092023_2124
+    Im feeling a little monkey like,
+    i thought i made lambda funcs to the
+    circle, only to find regular funcs.
+    I promise to die someway somehow.
+
+STATEOFTHECODE 24092023_0145
+    fixed the funcs to be lambda.
+    i think i actually finished the coding
+    for the pointpack.
+    Next should be a basic menu and done!
+
+STATEOFTHECODE 04102023_1831
+    Finallizing the very fucking annoying menu. 
+    I really really hate creating this kind of stuff that 
+    needs lots of string so the user has some kind of coherence 
+    while using the program.
+    Main is really easy. Gets the menu and starts it. menu
+    takes over from there. 
+
 
 
         

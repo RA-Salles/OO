@@ -109,7 +109,7 @@ class line(errors):  # Everybody should inherit errors. Else it will get funny.
         # this function is generated in runtime. Meaning it is unique for every line.
 
         def f(x): return m * \
-            (self.limitpoints[1].x-self.limitpoints[0].x) - \
+            (x - self.limitpoints[0].x) - \
             self.limitpoints[1].y
         self.__message = "calculating average variation"
         # this guy contains all x's for the entire line, which is made of points
@@ -131,10 +131,8 @@ class line(errors):  # Everybody should inherit errors. Else it will get funny.
 
 
 class figure(errors):
-    """
-        is always closed. To make an 'open figure', you should use line collection.
-    """
 
+    # is always closed. To make an 'open figure', you should use line collection.
     # the pointlist should be a list of point classes.
     def __init__(self, pointlist: list, center, precision: int):
         self.message.append("checking pointlist")
@@ -179,13 +177,15 @@ class figure(errors):
             if i == (len(self.pointlist) - 1):
                 # this guy chains point with point to construct the lines
                 self.linelist.append(
-                    line(self.pointlist[i], self.pointlist[i+1]))
+                    line([self.pointlist[i], self.pointlist[i+1]], self.precision))
             else:
                 # and this handles the last point, which should be chained to the first
                 self.linelist.append(
-                    line(self.pointlist[i], self.pointlist[0]))
+                    line([self.pointlist[i], self.pointlist[0]], self.precision))
         for l in self.linelist:
-            pass
+            for p in l.allx:
+                self.allx.append(p.x)
+                self.ally.append(p.y)
 
 
 class circle(point):
@@ -232,8 +232,9 @@ class circle(point):
             self.precision = precision
             self.x = x
             self.y = y
+            self.getpoints()
 
-    def pointgetter(self):
+    def getpoints(self):
         """
             this guy should be called only after you thorougly chech your vars.
             IT HAS NO CHECKS AND WILL ONLY DO ITS THING.
@@ -249,3 +250,12 @@ class circle(point):
         for theta in thetas:
             self.allx.append(xgetter(theta))
             self.ally.append(ygetter(theta))
+
+    # checks if a point is inside the circle
+    def ispointincircle(self, p: point) -> bool:
+        # this should be runned only after init.
+        dist = np.sqrt((self.x - point.x)**2 + (self.y - point.y)**2)
+        if dist > self.radius:
+            return False
+        else:
+            return True
