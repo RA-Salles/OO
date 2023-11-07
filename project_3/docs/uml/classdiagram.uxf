@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>340</y>
+      <w>140</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+-name:  string
+-model: string
+-types: list
+-position: list
+ 
+_-ClassAttribute: Long_
+--
+#GetStatus(self): bool
+#GetPosition(self): [x,y,...]
+#updatePosition(self, newposition): void
+#updateModel(self, newmodel): void
+#getypes(self): list
+#Updatetypes(self,newtypes): void
+#Die(self): void
+
+/+AbstractOperation()/
+--
+Responsibilities
+-- Mother of all things with position and hp
+-- Models directly to local database
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>105</y>
+      <w>120</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>
+Engine -&gt; pygame
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Draws stuff on screen
+-- Gets input</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>225</y>
+      <w>115</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>Controller
+{Some Properties}
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#start()
+#end()
+
+--
+Responsibilities
+-- Main game logic
+*-- talks with game engine and db*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>400</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>dbcommons
+--
++!has no variables!+
+--
+#Create()
+#Read()
+#Search()
+#Delete()
+#Update()
+--
+Responsibilities
+-- Teaches controller to use db</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>455</x>
+      <y>400</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>gamelogic
+--
++time: float
++localdatabase
++ruleset
+--
+#Start(): int
+#Update(): int
+#DeleteEntity(): int
+#UpdateEntity(): int 
+--
+Responsibilities
+-- Teaches controller everything it needs 
+to start and keep the game running.
+-- Handles gamelogic such as how a player 
+should jump and how high</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>685</x>
+      <y>540</y>
+      <w>155</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>Controller has properties to simply
+start and end the game instance
+Everything else should be done 
+automatically via hardcoded functions
+or called by user (Such as starting a new game)
+(or moving an entity)!
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>295</x>
+      <y>680</y>
+      <w>155</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ErrorCommons
+--
++log: list
++errorflag: int
+--
+#WritetoLog()
+#LogDump()
+#KillProgram()
+--
+Responsibilities
+-- Handles error catching and logging of errors
+*-- super useful for debugging!*
+-- prints logs to terminal and stuff
+-- kills program and avoids a general crash</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>750</x>
+      <y>5</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>260</y>
+      <w>85</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;50.0;10.0;50.0;400.0;10.0;400.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>235</y>
+      <w>330</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>640.0;10.0;10.0;10.0;10.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>375</x>
+      <y>340</y>
+      <w>310</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>455</x>
+      <y>645</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EVERYONE
+INHERITS 
+ERRORCOMMONS!
+(Except engine :&gt;)</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

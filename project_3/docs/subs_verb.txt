@@ -1,0 +1,101 @@
+-GERAL----------------------------------->
+Proposta: um sistema de engine capaz de simular um combate por turnos entre entidades,
+com a lógica de jogo sendo feita por meio de um controller e uma database (local).
+O sistema de salvamento deve ser feito por uma outra database (geral) separada, que salva os 
+estados do jogo relevantes para continuar um jogo.
+O sistema será baseado em entidades com uma lista de características que definem se elas
+podem atacar, qual IA de combate elas usam, se elas são controláveis entre outras características.
+O player poderá se mover, utilizar itens, possuir um inventário, atacar e verificar suas proximidades. 
+O player terá vencido caso ele consiga cumprir os objetivos do mapa (Matar todos os inimigos, Obter um item, Chegar a um local, etc.)
+
+-REQUISITOS--------------------------->
+    Básicos
+        1. capacidade de simulação de turnos
+        2. capacidade de movimentação
+    combate
+        1. capacidade de ataque e verificação de dano 
+        2. capacidade de movimentação de npc automaticamente
+        3. capacidade de utilização de itens
+        4. capacidade de equipar itens
+    extras
+        1. capacidade de verificar itens 
+        2. capacidade de 
+    UI 
+        1. capacidade de colocar texturas e auterá-las durante o jogo
+        2. capacidade de uso do mouse para controlar entidades e visualização do mapa
+        3. capacidade de definição de mapas customizados.
+    commands
+        1. capacidade de enviar comandos ao controller por meio do terminal
+        2. capacidade de manipular aspectos do jogo em tempo real com um terminal (spawnar um inimigo. Destruir uma parede. Desligar turnos. etc.)
+
+Substantivos:
+    player
+    entidades 
+    objetivos
+    inimigos
+    combate
+    turnos
+    engine
+    controller
+    database local
+    database geral
+
+
+Verbos:
+    utilizar
+    mover
+    atacar
+    simular
+    possuir 
+    verificar
+    combater
+
+
+-DETALHAMENTO---------------------------->
+
+1. A classe enitdade define tudo que tem características definíveis 
+como textura e posição. 
+2. Os inimigos, paredes e demais estruturas e seres são definidos por meio
+de características da classe entidade.
+3. A engine não conversa diretamente com o controlador. A engine deverá apenas ler
+os dados da database local, gerada em tempo real, para printar EXATAMENTE as informações
+presentes nos dados.
+4. A database local contém as informações do jogo para que sejam printadas e algumas informações
+gerais para que o jogo possa ser salvo.
+5. A classe engine será uma composição do pacote pygame e funções que ensinam como a engine deve interpretar
+as informações presentes na database local.
+6. A engine NUNCA deve ser capaz de alterar as informações de NENHUMA database, sendo capaz apenas de realizar
+a leitura e o print dessas informações. 
+7. O controller deve ser a única classe capaz de alterar as informações presentes nos bancos de dados. 
+8. A classe entidade serve para criar arquetipos de inimigos, paredes e qualquer coisa que tenha uma posição, 
+textura, hitbox.
+9. O player herda da classe entidade OU é uma entidade com característica controlável. O jogador pode manipular
+tanto classes player quanto entidades controláveis. O gamelogic deve ser capaz de pedir para o player 
+agir por qualquer entidade controlável. 
+
+
+ROTEIRO DE DESENVOLVIMENTO
+    1. PYGAME <-
+        1. Descobrir como fazer um personagem possuir textura a partir de uma imagem salva em arquivos locais
+        2. Descobrir como movimentar um personagem
+        3. Descobrir como criar um mapa
+        4. Descobrir demais funções básicas da engine ou criá-las.
+        5. Verificar como diabos um mouse funciona. 
+    2. database -> dbcommons
+        1. Decidir por uma database
+        2. Programar funções CRUD da database
+        3. Verificar como permitir que a engine plote dados da db, ou seja, leia dados da db.
+    3. Gamelogic 
+        1. Programar movimentação em grid
+        2. Programar movimentação em turnos
+        3. Programar ataque em turnos
+        4. Iniciar programação de funções orientadas a verificação de características das entidades
+        5. etc. -> ou seja, todos os aspectos de como o jogo funciona (calculo de dano, verificação de possibilidade de movimentação, etc.)
+    4. Controller 
+        1. Possibilitar o spawn de inimigos e determinação de aspectos de um mapa por meio da leitura de um arquivo.
+        2. Possibilitar o registro de input do usuário para o feedback pela engine-> tela
+        3. Automatização de tudo que pode ser automatizado, sobrando APENAS as funções start() e end(), que são delegadas ao usuário. 
+        
+
+
+
